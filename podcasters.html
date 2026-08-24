@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Podcasters We Help | ClipCycle</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:system-ui,sans-serif;background:#0e1116;color:#e6edf3;line-height:1.6}
+.wrap{max-width:900px;margin:auto;padding:60px 20px}
+h1{font-size:2rem;color:#50fa7b}
+a{color:#50fa7b;text-decoration:none}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;margin:30px 0}
+.card{background:#161c24;border:1px solid #232c38;border-radius:12px;padding:18px}
+.card .name{font-weight:700;margin-bottom:4px}
+.card .sub{color:#9aa7b3;font-size:.85rem}
+.card a{font-size:.85rem}
+.note{color:#9aa7b3;margin-top:20px}
+.back{display:inline-block;margin-bottom:20px;color:#9aa7b3}
+footer{padding:30px;text-align:center;color:#586a7d;font-size:.85rem}
+</style>
+</head>
+<body>
+<div class="wrap">
+<a class="back" href="./">← Home</a>
+<h1>Podcasters We'd Love To Edit For</h1>
+<p class="note">These shows have the audience. They often lack short-form presence. If you run one of these — or know someone who does — <a href="./">get 2 free samples here</a>.</p>
+<div class="grid" id="grid"></div>
+<p class="note">Want your show listed? Message <a href="https://t.me/dhaherautobot">@dhaherautobot</a> on Telegram.</p>
+</div>
+<footer>Dhaher Autobot Ventures · © 2026</footer>
+<script>
+const data = [
+  {n:"Lawrence Mackey x BUSINESS BEATZ", s:"958K", u:"@thelawrencemackey"},
+  {n:"MERI PODCAST", s:"241K", u:"@meripodcast"},
+  {n:"The American Business Podcast", s:"234K", u:"@americanbusinesspodcast"},
+  {n:"Colorado Business Podcast", s:"214K", u:"@coloradobusinesspodcast"},
+  {n:"Chris Donnelly Podcast", s:"172K", u:"@chrisdonnellypodcast"},
+  {n:"World's Greatest Business Thinkers", s:"115K", u:"@wgbtpodcast"},
+  {n:"Entrepreneur Podcast (AR)", s:"103K", u:"@entrepreneurdz"},
+  {n:"Abderrazak Yousfi", s:"85.8K", u:"@abderrazakyousfi"},
+  {n:"Business Review Greece", s:"60.9K", u:"@businessreviewgreece"},
+  {n:"Entrepreneurs Chat Podcast", s:"55.4K", u:"@entrepreneurschat"},
+  {n:"Christian Wolf & Eric Demuth", s:"51.7K", u:""},
+  {n:"The Business Round Podcast", s:"37.8K", u:""},
+  {n:"TOMorrow Business Podcast", s:"28.3K", u:""},
+  {n:"James Sinclair's Podcast", s:"10.5K", u:""}
+];
+const grid = document.getElementById('grid');
+data.forEach(d=>{
+  const c = document.createElement('div'); c.className='card';
+  c.innerHTML = `<div class="name">${d.n}</div><div class="sub">${d.s} subscribers</div>` + (d.u?`<a href="https://youtube.com/${d.u}" target="_blank">${d.u}</a>`:'');
+  grid.appendChild(c);
+});
+</script>
+</body>
+</html>
