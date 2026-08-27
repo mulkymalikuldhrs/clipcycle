@@ -36,5 +36,34 @@ footer{padding:26px;text-align:center;color:#586a7d;font-size:.85rem}
 <p class="note">Like these? The paid <b>Autonomy OS bundle</b> ($5) drops once this pack hits 25 downloads.</p>
 </div>
 <footer>Dhaher Autobot Ventures · © 2026<p style="text-align:center"><a href="blog/">Read the blog →</a></p></footer>
+<script>
+// Simple download tracking - stores locally and attempts to send to endpoint
+(function() {
+  const dlLink = document.querySelector('a.dl');
+  if (!dlLink) return;
+  
+  function trackDownload() {
+    const key = 'exp01_download_count';
+    let count = parseInt(localStorage.getItem(key) || '0', 10) + 1;
+    localStorage.setItem(key, count.toString());
+    
+    // Attempt to send to tracking endpoint (if configured)
+    const endpoint = 'https://api.dhaher.io/track'; // placeholder - configure if needed
+    if (typeof fetch !== 'undefined') {
+      fetch(endpoint, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ event: 'download', experiment: 'EXP-01', count: count, ts: Date.now() })
+      }).catch(() => {}); // Silently fail - localStorage is primary
+    }
+    
+    // Log to console for manual verification
+    console.log('[EXP-01] Download tracked:', count, 'total');
+  }
+  
+  dlLink.addEventListener('click', trackDownload);
+})();
+</script>
 </body>
 </html>
